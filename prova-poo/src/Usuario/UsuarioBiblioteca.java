@@ -1,29 +1,26 @@
 package Usuario;
 
-import Multa.ICalculadoraDeMulta;
-
 public abstract class UsuarioBiblioteca {
     protected String nome;
-    private ICalculadoraDeMulta calculadoraDeMulta;
+    protected Integer diasAtraso;
 
 
-    public UsuarioBiblioteca(String nome, ICalculadoraDeMulta calculadoraDeMulta) {
+    public UsuarioBiblioteca(String nome,Integer diasAtraso) {
         this.nome = nome;
-        this.calculadoraDeMulta = calculadoraDeMulta;
+        this.diasAtraso = diasAtraso;
     }
 
-    public abstract double calcularMulta
-            (Integer diasAtraso);
+    public abstract double calcularMulta();
 
     public String getResumo() {
-        return "";
+        return nome + " atrasou " + diasAtraso + " dias.";
     }
 
     public String getNome() {
         return nome;
     }
 
-    public double getCalculadoraDeMulta(Integer diasAtraso) {
-        return calculadoraDeMulta.tipoMulta(diasAtraso);
+    public Integer getDiasAtraso() {
+        return diasAtraso;
     }
 }

@@ -4,15 +4,12 @@ import Multa.ICalculadoraDeMulta;
 
 public class Professor extends UsuarioBiblioteca{
 
-
-    public Professor(String nome, ICalculadoraDeMulta calculadoraDeMulta) {
-        super(nome, calculadoraDeMulta);
+    public Professor(String nome, Integer diasAtraso) {
+        super(nome, diasAtraso);
     }
 
     @Override
-    public double calcularMulta(Integer diasAtraso) {
-        System.out.println("Valor total da multa do(a) "
-                + this.getNome());
-        return diasAtraso * 0.25;
+    public double calcularMulta() {
+        return 0.25 * diasAtraso;
     }
 }

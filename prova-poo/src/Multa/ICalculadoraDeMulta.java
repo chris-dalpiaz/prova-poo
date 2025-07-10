@@ -1,5 +1,7 @@
 package Multa;
 
+import Usuario.UsuarioBiblioteca;
+
 public interface ICalculadoraDeMulta {
-    double tipoMulta(Integer diaAtraso);
+    double calcular(UsuarioBiblioteca usuario);
 }

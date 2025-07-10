@@ -1,30 +1,26 @@
 package Biblioteca;
 
 import Mensagem.IMensagem;
+import Multa.ICalculadoraDeMulta;
 import Usuario.UsuarioBiblioteca;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class Biblioteca {
-    ArrayList<UsuarioBiblioteca> listaUsuarios = new ArrayList<>();
-    private IMensagem tipoMensagem;
+    private IMensagem mensagem;
+    private ICalculadoraDeMulta calculadora;
 
-    public Biblioteca(IMensagem tipoMensagem) {
-        this.tipoMensagem = tipoMensagem;
+    public Biblioteca(IMensagem mensagem, ICalculadoraDeMulta calculadora) {
+        this.mensagem = mensagem;
+        this.calculadora = calculadora;
     }
 
-    public void addUsuario(UsuarioBiblioteca usuario){
-        listaUsuarios.add(usuario);
-        System.out.println("Adicionado o usuário " + usuario.getNome() +
-                " com sucesso!\n");
+    public void processarMultas(List<UsuarioBiblioteca> usuarios) {
+        for (UsuarioBiblioteca usuario : usuarios) {
+            double multa = calculadora.calcular(usuario);
+            mensagem.enviar("Usuário: " + usuario.getNome() +
+                    "\nResumo: " + usuario.getResumo() +
+                    "\nMulta: R$ " + multa);
+        }
     }
-
-    public void processarMultas(){
-
-    }
-
-    public ArrayList getListaUsuarios() {
-        return listaUsuarios;
-    }
-
 }
